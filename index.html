@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Praveen Server</title>
+  <title>Praveen Server - Unique</title>
 
   <!-- Google Font: Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,147 +16,136 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-
-    
+      background: #f0f4f8;
     }
 
-    /* Server Section Box */
-    .iphone {
+    /* Container */
+    .device-frame {
       width: 100%;
-      max-width: 400px;
-      min-height: 500px;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 25px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-      padding: 25px 20px;
+      max-width: 420px;
+      min-height: 520px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      padding: 30px 25px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
-      /* Only fade-in animation */
-      animation: fadeInUp 1s ease-out;
+      animation: popInScale 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }
 
-    /* Fade-in from bottom */
-    @keyframes fadeInUp {
-      from {
+    /* Pop in + scale animation */
+    @keyframes popInScale {
+      0% {
         opacity: 0;
-        transform: translateY(40px) scale(0.95);
+        transform: scale(0.8) translateY(40px);
       }
-      to {
+      60% {
+        transform: scale(1.1) translateY(-10px);
         opacity: 1;
-        transform: translateY(0) scale(1);
+      }
+      100% {
+        transform: scale(1) translateY(0);
       }
     }
 
-    .header {
+    .title-area {
       text-align: center;
     }
 
-    .text-wrapper {
-      font-size: clamp(20px, 4vw, 26px);
+    .main-title {
+      font-size: clamp(22px, 5vw, 28px);
       font-weight: 700;
-      color: #111;
+      color: #222;
     }
 
-    .text-wrapper-2 {
-      font-size: clamp(14px, 3vw, 16px);
-      color: #444;
-      margin-top: 6px;
+    .subtitle {
+      font-size: clamp(15px, 3vw, 17px);
+      color: #555;
+      margin-top: 8px;
       font-weight: 500;
     }
 
-    .text-wrapper-3 {
-      font-size: clamp(12px, 2.5vw, 14px);
-      color: #2a9d8f;
-      margin-top: 4px;
+    .welcome-msg {
+      font-size: clamp(13px, 2.5vw, 15px);
+      color: #3aafa9;
+      margin-top: 6px;
       font-weight: 600;
     }
 
-    .menu {
+    .button-grid {
       display: grid;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .rectangle {
-      padding: 14px;
-      border-radius: 12px;
-      background-color: #f9f9f9;
+    .btn-link {
+      padding: 16px;
+      border-radius: 14px;
+      background-color: #f2f2f2;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 500;
-      font-size: clamp(14px, 3vw, 16px);
-      color: #333;
+      font-size: clamp(15px, 3vw, 17px);
+      color: #444;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
       text-align: center;
+      user-select: none;
     }
 
-    .rectangle:hover {
-      background-color: #2a9d8f;
+    .btn-link:hover,
+    .btn-link:focus {
+      background-color: #3aafa9;
       color: #fff;
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 14px rgba(42,157,143,0.35);
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 8px 18px rgba(58,175,169,0.4);
+      outline: none;
     }
 
-    .footer {
+    .footer-text {
       text-align: center;
-    }
-
-    .text-wrapper-6 {
-      font-size: clamp(12px, 2.5vw, 13px);
-      color: #555;
+      font-size: clamp(12px, 2.5vw, 14px);
+      color: #666;
       font-weight: 500;
+      margin-top: 20px;
     }
 
-    /* Tablet - show 2 columns */
     @media (min-width: 600px) {
-      .menu {
+      .button-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    /* Desktop - larger box */
     @media (min-width: 1024px) {
-      .iphone {
-        max-width: 500px;
-        min-height: 600px;
+      .device-frame {
+        max-width: 520px;
+        min-height: 620px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="iphone">
-    <div class="header">
-      <div class="text-wrapper">PRAVEEN SERVER</div>
-      <div class="text-wrapper-2">Hello Guys!😂</div>
-      <div class="text-wrapper-3">WLCOME TO SERVER😂👋</div>
+  <div class="device-frame">
+    <div class="title-area">
+      <div class="main-title">PRAVEEN SERVER</div>
+      <div class="subtitle">Hello Guys! 😂</div>
+      <div class="welcome-msg">WELCOME TO THE SERVER! 😂👋</div>
     </div>
 
-    <div class="menu">
-      <!-- Replace file paths with your real material -->
-      <a href="timetable.jpg" download class="rectangle">📘 Time Table</a>
-      <a href="DBMS 1.pdf" download class="rectangle">💾 DBMS</a>
-      <a href="" download class="rectangle">📟 ADLD</a>
-      <a href="AI.pdf" download class="rectangle">🤖 AI</a>
-      <a href="ADLD LAB.pdf" download class="rectangle">📂 ADLD LAB</a>
-      <a href="SAC LAB.docx" download class="rectangle">📂 SAC LAB</a>
-      <a href="SQL.pdf" download class="rectangle">📂 SQL LAB</a>
+    <div class="button-grid">
+      <a href="timetable.jpg" download class="btn-link">📘 Time Table</a>
+      <a href="DBMS 1.pdf" download class="btn-link">💾 DBMS</a>
+      <a href="#" class="btn-link" onclick="return false;">📟 ADLD</a>
+      <a href="AI.pdf" download class="btn-link">🤖 AI</a>
+      <a href="ADLD LAB.pdf" download class="btn-link">📂 ADLD LAB</a>
+      <a href="SAC LAB.docx" download class="btn-link">📂 SAC LAB</a>
+      <a href="SQL.pdf" download class="btn-link">📂 SQL LAB</a>
     </div>
 
-    <div class="footer">
-      <div class="text-wrapper-6"></div>
-    </div>
+    <div class="footer-text">© 2025 Praveen Server</div>
   </div>
-
 </body>
 </html>
-
-
-
-
-
-
-
