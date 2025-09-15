@@ -124,11 +124,48 @@
       letter-spacing: 1.1px;
     }
 
+    /* Password input area */
+    .password-area {
+      width: 100%;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #passwordInput {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      outline: none;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    #passwordInput::placeholder {
+      color: #d0c6e6;
+    }
+
+    #passwordInput:focus {
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 20px rgba(118, 75, 162, 0.6);
+    }
+
+    #passwordMessage {
+      margin-top: 8px;
+      font-size: 14px;
+      min-height: 18px;
+      color: #ff6b6b;
+    }
+
     /* Buttons grid */
     .button-grid {
       display: grid;
       gap: 16px;
-      margin-top: 30px;
+      margin-top: 10px;
     }
 
     /* Button style */
@@ -223,10 +260,22 @@
       <div class="welcome-msg">WELCOME TO THE SERVER! 😂👋</div>
     </div>
 
+    <!-- Password input -->
+    <div class="password-area">
+      <input 
+        type="password" 
+        id="passwordInput" 
+        placeholder="Enter password and press Enter" 
+        autocomplete="off"
+        aria-label="Password input"
+      />
+      <div id="passwordMessage"></div>
+    </div>
+
     <div class="button-grid">
       <a href="timetable.jpg" download class="btn-link" data-emoji="📘">Time Table</a>
       <a href="DBMS 1.pdf" download class="btn-link" data-emoji="💾">DBMS</a>
-      <a href="#" onclick="return false;" class="btn-link disabled" data-emoji="📟">ADLD</a>
+      <a href="#" onclick="return false;" class="btn-link disabled" data-emoji="📟" id="adldBtn">ADLD</a>
       <a href="AI.pdf" download class="btn-link" data-emoji="🤖">AI</a>
       <a href="ADLD LAB.pdf" download class="btn-link" data-emoji="📂">ADLD LAB</a>
       <a href="SAC LAB.docx" download class="btn-link" data-emoji="📂">SAC LAB</a>
@@ -235,7 +284,43 @@
 
     <div class="footer-text">© 2025 Praveen Server</div>
   </div>
+
+  <script>
+    const passwordInput = document.getElementById('passwordInput');
+    const passwordMessage = document.getElementById('passwordMessage');
+    const adldBtn = document.getElementById('adldBtn');
+
+    const correctPassword = 'praveen2007'; // Updated password
+
+    passwordInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const entered = passwordInput.value.trim();
+
+        if (entered === correctPassword) {
+          passwordMessage.style.color = '#a0ffb8';
+          passwordMessage.textContent = 'Password correct! ADLD unlocked.';
+
+          // Enable ADLD button
+          adldBtn.classList.remove('disabled');
+          adldBtn.removeAttribute('onclick');
+          adldBtn.style.pointerEvents = 'auto';
+          adldBtn.style.color = '#fff';
+          adldBtn.style.background = 'rgba(255, 255, 255, 0.25)';
+          adldBtn.style.boxShadow = '0 4px 15px rgba(118, 75, 162, 0.3)';
+          adldBtn.style.cursor = 'pointer';
+
+          passwordInput.value = '';
+        } else {
+          passwordMessage.style.color = '#ff6b6b';
+          passwordMessage.textContent = 'Incorrect password. Try again.';
+        }
+      }
+    });
+  </script>
 </body>
 </html>
+
+
 
 
